@@ -23,6 +23,14 @@
 
 typedef int64_t sreg_t;
 typedef uint64_t reg_t;
+struct vreg_t{
+    reg_t data[32];
+};
+
+// This is about vector data registers (v0-v31)
+const int NVPR = 32;
+// This is about vector predicate register (vp0-vp7)
+const int NVPPR = 8;
 
 const int NXPR = 32;
 const int NFPR = 32;

@@ -93,6 +93,7 @@ struct state_t
   reg_t pc;
   regfile_t<reg_t, NXPR, true> XPR;
   regfile_t<freg_t, NFPR, false> FPR;
+  regfile_t<vreg_t, NVPR, false> VPR;
 
   // control and status registers
   reg_t prv;    // TODO: Can this be an enum instead?
@@ -122,6 +123,20 @@ struct state_t
   reg_t tselect;
   mcontrol_t mcontrol[num_triggers];
   reg_t tdata2[num_triggers];
+
+  // Add vector extension CSR
+  reg_t vl;
+  reg_t vxrm;
+  reg_t vxsat;
+  reg_t vcsr;
+  
+  reg_t vcnpred;
+  
+  reg_t vcmaxw[4];
+  reg_t vctype[4];
+  reg_t vctypev[32];
+
+
 
   uint32_t fflags;
   uint32_t frm;
