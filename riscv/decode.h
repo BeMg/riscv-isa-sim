@@ -142,6 +142,7 @@ private:
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
 #define WRITE_VL(value) STATE.vl = value
 #define READ_VREG(reg) STATE.VPR[reg]
+#define WRITE_VREG(reg, value) STATE.VPR.write(reg, value)
 
 #ifndef RISCV_ENABLE_COMMITLOG
 # define WRITE_REG(reg, value) STATE.XPR.write(reg, value)
