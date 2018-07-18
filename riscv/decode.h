@@ -144,7 +144,7 @@ private:
 
 #define VRS1 READ_VREG(insn.rs1())
 #define VRS2 READ_VREG(insn.rs2())
-#define WRITE_VRG(value) WRITE_VREG(insn.rd(), value)
+#define WRITE_VRD(value) WRITE_VREG(insn.rd(), value)
 #define READ_VREG(reg) STATE.VPR[reg]
 #define WRITE_VREG(reg, value) STATE.VPR.write(reg, value)
 
