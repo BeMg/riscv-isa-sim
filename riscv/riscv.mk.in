@@ -290,6 +290,9 @@ riscv_insn_list = \
 	wfi \
 	xor \
 	xori \
+	setvl \
+	mac \
+	vld \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
