@@ -262,19 +262,53 @@ void sim_t::interactive_fregd(const std::string& cmd, const std::vector<std::str
 
 void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::string>& args)
 {
-  processor_t *p = get_core(args[0]);
-  fprintf(stderr, "vl: %d\n", p->get_state()->vl);
-  auto tmp = p->get_state()->VPR;
-  for(int i=0; i<NVPR; i++) 
+  if (args.size() == 1) 
   {
-    fprintf(stderr, "v%d:\n", i);
-    for(int j=0; j<32; j++) {
-      fprintf(stderr, "%d\t", tmp[i].data[j]);
+  processor_t *p = get_core(args[0]);
+
+    fprintf(stderr, "vl: %d\n", p->get_state()->vl);
+    auto tmp = p->get_state()->VPR;
+    for(int i=0; i<NVPR; i++) 
+    {
+      fprintf(stderr, "v%d:\n", i);
+      for(int j=0; j<32; j++) {
+        fprintf(stderr, "%d\t", tmp[i].data[j]);
+      }
+      fprintf(stderr, "\n");
     }
-    fprintf(stderr, "\n");
   }
-  
-  
+  else if (args.size() > 1)
+  {
+    processor_t *p = get_core(args[0]);
+    if (args[1] == "vl") 
+    {
+      fprintf(stderr, "vl: %d\n", p->get_state()->vl);
+    } 
+    else if (args[1] == "v") 
+    {
+      if (args.size() >= 3) {
+        int idx = stoi(args[2]);
+        fprintf(stderr, "v%d:\n", idx);
+        auto tmp = p->get_state()->VPR;
+        for(int j=0; j<32; j++) {
+          fprintf(stderr, "%d\t", tmp[idx].data[j]);
+        }
+        fprintf(stderr, "\n");
+      }
+      else 
+      {
+        // Do nothing
+      }
+    }
+    else 
+    {
+      // Do nothing
+    }
+  }
+  else 
+  {
+
+  }  
 }
 
 reg_t sim_t::get_mem(const std::vector<std::string>& args)
