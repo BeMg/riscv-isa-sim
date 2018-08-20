@@ -70,6 +70,7 @@ void sim_t::interactive()
   funcs["freg"] = &sim_t::interactive_freg;
   funcs["fregs"] = &sim_t::interactive_fregs;
   funcs["fregd"] = &sim_t::interactive_fregd;
+  funcs["vreg"] = &sim_t::interactive_vreg;
   funcs["pc"] = &sim_t::interactive_pc;
   funcs["mem"] = &sim_t::interactive_mem;
   funcs["str"] = &sim_t::interactive_str;
@@ -118,6 +119,7 @@ void sim_t::interactive_help(const std::string& cmd, const std::vector<std::stri
     "reg <core> [reg]                # Display [reg] (all if omitted) in <core>\n"
     "fregs <core> <reg>              # Display single precision <reg> in <core>\n"
     "fregd <core> <reg>              # Display double precision <reg> in <core>\n"
+    "vreg <core>                     # Display about vector <reg> in <core>\n"                    
     "pc <core>                       # Show current PC in <core>\n"
     "mem <hex addr>                  # Show contents of physical memory\n"
     "str <hex addr>                  # Show NUL-terminated C string\n"
@@ -256,6 +258,81 @@ void sim_t::interactive_fregd(const std::string& cmd, const std::vector<std::str
   fpr f;
   f.r = get_freg(args);
   fprintf(stderr, "%g\n", isBoxedF64(f.r) ? f.d : NAN);
+}
+
+void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::string>& args)
+{
+  if (args.size() == 1) 
+  {
+  processor_t *p = get_core(args[0]);
+
+    fprintf(stderr, "vl: %d\n", p->get_state()->vl);
+    auto tmp = p->get_state()->VPR;
+    for(int i=0; i<NVPR; i++) 
+    {
+      fprintf(stderr, "v%d:\n", i);
+      for(int j=0; j<32; j++) {
+        fprintf(stderr, "%d\t", tmp[i].data[j]);
+      }
+      fprintf(stderr, "\n");
+    }
+  }
+  else if (args.size() > 1)
+  {
+    processor_t *p = get_core(args[0]);
+    if (args[1] == "vl") 
+    {
+      fprintf(stderr, "vl: %d\n", p->get_state()->vl);
+    } 
+    else if (args[1] == "vregmax") 
+    {
+      fprintf(stderr, "vregmax: %d\n", p->get_state()->vregmax);
+    }
+    else if (args[1] == "vemaxw") 
+    {
+      fprintf(stderr, "vemaxw: %d\n", p->get_state()->vemaxw);
+    }
+    else if (args[1] == "vtypeen") 
+    {
+      fprintf(stderr, "vtypeen: %d\n", p->get_state()->vtypeen);
+    }
+    else if (args[1] == "vxcm") 
+    {
+      fprintf(stderr, "vxcm: %d\n", p->get_state()->vxcm);
+    }
+    else if (args[1] == "vxrm") 
+    {
+      fprintf(stderr, "vxrm: %d\n", p->get_state()->vxrm);
+    }
+    else if (args[1] == "v") 
+    {
+      if (args.size() >= 3) {
+        int idx = stoi(args[2]);
+        fprintf(stderr, "v%d:\n", idx);
+        auto tmp = p->get_state()->VPR;
+        for(int j=0; j<32; j++) {
+          fprintf(stderr, "%d\t", tmp[idx].data[j]);
+        }
+        fprintf(stderr, "\n");
+        for(int j=0; j<32; j++) {
+          fprintf(stderr, "%f\t", tmp[idx].f_data[j]);
+        }
+        fprintf(stderr, "\n");
+      }
+      else 
+      {
+        // Do nothing
+      }
+    }
+    else 
+    {
+      // Do nothing
+    }
+  }
+  else 
+  {
+
+  }  
 }
 
 reg_t sim_t::get_mem(const std::vector<std::string>& args)

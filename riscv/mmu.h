@@ -176,6 +176,11 @@ public:
   store_func(uint32)
   store_func(uint64)
 
+  store_func(int8)
+  store_func(int16)
+  store_func(int32)
+  store_func(int64)
+
   // perform an atomic memory operation at an aligned address
   amo_func(uint32)
   amo_func(uint64)

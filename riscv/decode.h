@@ -23,8 +23,11 @@
 
 typedef int64_t sreg_t;
 typedef uint64_t reg_t;
-struct vreg_t{
-    reg_t data[32];
+const int MAXVL = 32;
+
+struct vreg_t {
+    reg_t data[MAXVL] = {0};
+    float f_data[MAXVL] = {0};
 };
 
 // This is about vector data registers (v0-v31)
@@ -78,6 +81,7 @@ public:
   insn_t(insn_bits_t bits) : b(bits) {}
   insn_bits_t bits() { return b; }
   int length() { return insn_length(b); }
+  int64_t l_imm() { return int64_t(b) >> 12; }
   int64_t i_imm() { return int64_t(b) >> 20; }
   int64_t s_imm() { return x(7, 5) + (xs(25, 7) << 5); }
   int64_t sb_imm() { return (x(8, 4) << 1) + (x(25,6) << 5) + (x(7,1) << 11) + (imm_sign() << 12); }
@@ -141,12 +145,21 @@ private:
 #define RS2 READ_REG(insn.rs2())
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
 #define WRITE_VL(value) STATE.vl = value
+#define WRITE_VREGMAX(value) STATE.vregmax = value
+#define WRITE_VEMAXW(value) STATE.vemaxw = value
+#define WRITE_VTYPEEN(value) STATE.vtypeen = value
+#define WRITE_VXCM(value) STATE.vxcm = value
+#define WRITE_VXRM(value) STATE.vxrm = value
 
 #define VRS1 READ_VREG(insn.rs1())
 #define VRS2 READ_VREG(insn.rs2())
-#define WRITE_VRG(value) WRITE_VREG(insn.rd(), value)
+#define VRRD READ_VREG(insn.rd())
+#define WRITE_VRD(value) WRITE_VREG(insn.rd(), value)
 #define READ_VREG(reg) STATE.VPR[reg]
 #define WRITE_VREG(reg, value) STATE.VPR.write(reg, value)
+
+#define INTTOFLOAT(value) *((float *)(&value))
+#define FLOATTOINT(value) *((int *)(&value))
 
 #ifndef RISCV_ENABLE_COMMITLOG
 # define WRITE_REG(reg, value) STATE.XPR.write(reg, value)
