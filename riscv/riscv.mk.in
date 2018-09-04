@@ -290,7 +290,30 @@ riscv_insn_list = \
 	wfi \
 	xor \
 	xori \
-	vld \
+	vadd \
+	vsub \
+	vsll \
+	vxor \
+	vsrl \
+	vsra \
+	vor \
+	vand \
+	vmul \
+	vdiv \
+	vseq \
+	vslt \
+	vsltu \
+	vfadd_s \
+	vfsub_s \
+	vfmul_s \
+	vfdiv_s \
+	vfmin_s \
+	vfmax_s \
+	vfle_s \
+	vflt_s \
+	vfeq_s \
+	vfsqrt_s \
+	vsetvl \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
