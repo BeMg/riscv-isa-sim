@@ -1,4 +1,3 @@
-
 int element_size = 16;
 int element_num = int(32 / element_size);
 
@@ -12,8 +11,14 @@ for(int i=0; i<element_num; i++) {
 
 int rst[element_num];
 
-rst[0] = (rs1[0]+rs2[0]) & 0xffff;
-rst[1] = (rs1[1]+rs2[1]) & 0xffff;
+for (int i=0; i<element_num; i++) {
+    int min_num = (rs1[i] > rs2[i]) ? rs2[i] : rs1[i];
+    if(rs1[i]+rs2[i] < min_num) { 
+        rst[i] = 0xffffffff;
+    } else {
+        rst[i] = (rs1[i]+rs2[i]) & 0xffff;
+    }
+}
 
 int rst_sum = 0;
 

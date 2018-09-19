@@ -314,10 +314,10 @@ void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::stri
           fprintf(stderr, "%d\t", tmp[idx].data[j]);
         }
         fprintf(stderr, "\n");
-        for(int j=0; j<32; j++) {
-          fprintf(stderr, "%f\t", tmp[idx].f_data[j]);
-        }
-        fprintf(stderr, "\n");
+        // for(int j=0; j<32; j++) {
+        //   fprintf(stderr, "%f\t", tmp[idx].f_data[j]);
+        // }
+        // fprintf(stderr, "\n");
       }
       else 
       {
