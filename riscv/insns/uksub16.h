@@ -12,11 +12,11 @@ for(int i=0; i<element_num; i++) {
 int rst[element_num];
 
 for (int i=0; i<element_num; i++) {
-    int min_num = (rs1[i] > rs2[i]) ? rs2[i] : rs1[i];
-    if(rs1[i]+rs2[i] < min_num) { 
-        rst[i] = 0xffffffff;
+    int max_num = (rs1[i] > rs2[i]) ? rs1[i] : rs2[i];
+    if(rs1[i]-rs2[i] > max_num) { 
+        rst[i] = 0x0;
     } else {
-        rst[i] = (rs1[i]+rs2[i]) & 0xffff;
+        rst[i] = (rs1[i]-rs2[i]) & 0xffff;
     }
 }
 
