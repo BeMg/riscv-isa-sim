@@ -290,43 +290,64 @@ riscv_insn_list = \
 	wfi \
 	xor \
 	xori \
+	vlh \
+	vlw \
 	vld \
+	vsh \
+	vsw \
 	vsd \
-	vadd \
-	vsub \
-	vsll \
-	vxor \
-	vsrl \
-	vsra \
-	vor \
-	vand \
-	vmul \
-	vdiv \
-	vseq \
-	vslt \
-	vsltu \
+	vsetvl \
+	vconfig \
 	vfadd_s \
 	vfsub_s \
 	vfmul_s \
 	vfdiv_s \
+	vfsqrt_s \
 	vfmin_s \
 	vfmax_s \
-	vfle_s \
-	vflt_s \
 	vfeq_s \
-	vfsqrt_s \
-	vsetvl \
+	vflt_s \
+	vfle_s \
+	vfadd_d \
+	vfsub_d \
+	vfmul_d \
+	vfdiv_d \
+	vfsqrt_d \
+	vfmin_d \
+	vfmax_d \
+	vfeq_d \
+	vflt_d \
+	vfle_d \
 	add16 \
 	radd16 \
 	uradd16 \
 	kadd16 \
 	ukadd16 \
-	add8 \
 	sub16 \
 	rsub16 \
 	ursub16 \
 	ksub16 \
 	uksub16 \
+	cras16 \
+	rcras16 \
+	urcras16 \
+	kcras16 \
+	ukcras16 \
+	crsa16 \
+	rcrsa16 \
+	urcrsa16 \
+	kcrsa16 \
+	ukcrsa16 \
+	add8 \
+	radd8 \
+	uradd8 \
+	kadd8 \
+	ukadd8 \
+	sub8 \
+	rsub8 \
+	ursub8 \
+	ksub8 \
+	uksub8 \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

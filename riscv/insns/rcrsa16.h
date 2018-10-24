@@ -1,8 +1,9 @@
+
 int element_size = 16;
 int element_num = int(32 / element_size);
 
-unsigned int rs1[element_num];
-unsigned int rs2[element_num];
+int rs1[element_num];
+int rs2[element_num];
 
 for(int i=0; i<element_num; i++) {
     rs1[i] = ((RS1 << element_size*i) >> element_size*(element_num-1)) & 0xffff;
@@ -11,14 +12,8 @@ for(int i=0; i<element_num; i++) {
 
 int rst[element_num];
 
-for (int i=0; i<element_num; i++) {
-    unsigned int max_num = (rs1[i] > rs2[i]) ? rs1[i] : rs2[i];
-    if(rs1[i]-rs2[i] > max_num) { 
-        rst[i] = 0x0;
-    } else {
-        rst[i] = (rs1[i]-rs2[i]) & 0xffff;
-    }
-}
+rst[0] = ((rs1[0]-rs2[1]) >> 1) & 0xffff;
+rst[1] = ((rs1[1]+rs2[0]) >> 1) & 0xffff;
 
 int rst_sum = 0;
 

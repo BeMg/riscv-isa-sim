@@ -17,19 +17,27 @@ int rst[element_num];
 //              negative add negative -> positive
 // P.S. 0x8000 is mask for take number first bits to eheck sign.
 
-for (int i=0; i<element_num; i++) {
-    if( ((rs1[i]&0x8000) != rs2[i]&0x8000) && ((rs1[i] - rs2[i])&0x8000 != (rs1[i]&0x8000)) ) { 
-        if ((rs1[i]&0x8000) == 0) {
-            rst[i] = 0b0111111111111111;
+// First, rs1[0] + rs2[1] 
+if( ((rs1[0]&0x8000) != rs2[1]&0x8000) && ((rs1[0] - rs2[1])&0x8000 != (rs1[0]&0x8000)) ) { 
+        if ((rs1[0]&0x8000) == 0) {
+            rst[0] = 0b0111111111111111;
         } else {
-            rst[i] = 0b1000000000000000;
+            rst[0] = 0b1000000000000000;
         }
     } else {
-        rst[i] = (rs1[i]-rs2[i]) & 0xffff;
-    }
+        rst[0] = (rs1[0]-rs2[1]) & 0xffff;
 }
-// rst[0] = (rs1[0]+rs2[0]) & 0xffff;
-// rst[1] = (rs1[1]+rs2[1]) & 0xffff;
+
+// Second, rs1[1] - rs2[0]
+if( ((rs1[1]&0x8000) == rs2[0]&0x8000) && ((rs1[1] + rs2[0])&0x8000 != (rs1[1]&0x8000)) ) { 
+        if ((rs1[1]&0x8000) == 0) {
+            rst[1] = 0b0111111111111111;
+        } else {
+            rst[1] = 0b1000000000000000;
+        }
+    } else {
+        rst[1] = (rs1[1]+rs2[0]) & 0xffff;
+}
 
 int rst_sum = 0;
 

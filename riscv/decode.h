@@ -20,6 +20,7 @@
 #include "softfloat_types.h"
 #include "specialize.h"
 #include <cinttypes>
+#include <cmath>
 
 typedef int64_t sreg_t;
 typedef uint64_t reg_t;
@@ -27,7 +28,6 @@ const int MAXVL = 32;
 
 struct vreg_t {
     reg_t data[MAXVL] = {0};
-    float f_data[MAXVL] = {0};
 };
 
 // This is about vector data registers (v0-v31)
@@ -93,6 +93,11 @@ public:
   uint64_t rs3() { return x(27, 5); }
   uint64_t rm() { return x(12, 3); }
   uint64_t csr() { return x(20, 12); }
+  uint64_t mask_hi() { return x(25, 2); }
+  uint64_t mask_lo() { return x(12, 2); }
+  uint64_t imm3_ld() { return x(29, 3); }
+  uint64_t imm3_st() { return x(9, 3); }
+
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
@@ -158,6 +163,10 @@ private:
 #define WRITE_VRD(value) WRITE_VREG(insn.rd(), value)
 #define READ_VREG(reg) STATE.VPR[reg]
 #define WRITE_VREG(reg, value) STATE.VPR.write(reg, value)
+#define CSR insn.csr()
+#define VMASK insn.mask()
+#define SQRT(value) std::sqrt(value)
+
 
 #define INTTOFLOAT(value) *((float *)(&value))
 #define FLOATTOINT(value) *((int *)(&value))

@@ -1,12 +1,13 @@
-int element_size = 16;
+
+int element_size = 8;
 int element_num = int(32 / element_size);
 
-unsigned int rs1[element_num];
-unsigned int rs2[element_num];
+int rs1[element_num];
+int rs2[element_num];
 
 for(int i=0; i<element_num; i++) {
-    rs1[i] = ((RS1 << element_size*i) >> element_size*(element_num-1)) & 0xffff;
-    rs2[i] = ((RS2 << element_size*i) >> element_size*(element_num-1)) & 0xffff;
+    rs1[i] = ((RS1 << element_size*i) >> element_size*(element_num-1)) & 0xff;
+    rs2[i] = ((RS2 << element_size*i) >> element_size*(element_num-1)) & 0xff;
 }
 
 int rst[element_num];
@@ -14,9 +15,9 @@ int rst[element_num];
 for (int i=0; i<element_num; i++) {
     unsigned int min_num = (rs1[i] > rs2[i]) ? rs2[i] : rs1[i];
     if(rs1[i]+rs2[i] < min_num) { 
-        rst[i] = 0xffff;
+        rst[i] = 0xff;
     } else {
-        rst[i] = (rs1[i]+rs2[i]) & 0xffff;
+        rst[i] = (rs1[i]+rs2[i]) & 0xff;
     }
 }
 
