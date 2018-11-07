@@ -348,6 +348,14 @@ riscv_insn_list = \
 	ursub8 \
 	ksub8 \
 	uksub8 \
+	smin16 \
+	umin16 \
+	smax16 \
+	umax16 \
+	smin8 \
+	umin8 \
+	smax8 \
+	umax8 \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))
