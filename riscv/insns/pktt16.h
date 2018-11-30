@@ -12,8 +12,8 @@ for(int i=0; i<element_num; i++) {
 
 int rst[element_num];
 
-rst[0] = (rs1[0]+rs2[0]) & 0xffff;
-rst[1] = (rs1[1]+rs2[1]) & 0xffff;
+rst[0] = (rs1[0]) & 0xffff;
+rst[1] = (rs2[0]) & 0xffff;
 
 int rst_sum = 0;
 

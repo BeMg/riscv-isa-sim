@@ -148,6 +148,7 @@ private:
 #define READ_FREG(reg) STATE.FPR[reg]
 #define RS1 READ_REG(insn.rs1())
 #define RS2 READ_REG(insn.rs2())
+#define RD READ_REG(insn.rd())
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
 #define WRITE_VL(value) STATE.vl = value
 #define WRITE_VREGMAX(value) STATE.vregmax = value
