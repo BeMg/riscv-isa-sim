@@ -34,3 +34,7 @@ if (old_rd < 0 && tmp < 0 && rd > 0) {
 
 WRITE_RD(rd);
 
+// Count SIMD insn
+
+SIMD_ADD1;
+SIMD_NOPK_ADD1;

@@ -281,6 +281,7 @@ void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::stri
   }
   else if (args.size() > 1)
   {
+    
     processor_t *p = get_core(args[0]);
     if (args[1] == "vl") 
     {
@@ -339,7 +340,15 @@ void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::stri
 
 void sim_t::interactive_simd_count(const std::string& cmd, const std::vector<std::string>& args)
 {
-  fprintf(stderr, "Test: %d\n", current_step);
+  if(args.size() == 1) {
+    processor_t *p = get_core(args[0]);
+    int simd_count = p->get_state()->simd_count;
+    int simd_count_without_pack = p->get_state()->simd_count_without_pack;
+    fprintf(stderr, "All_SIMD:\t%d/%d\n", simd_count, current_step); 
+    fprintf(stderr, "Without_PACK:\t%d/%d\n", simd_count_without_pack, current_step);  
+  } else {
+    fprintf(stderr, "Need core number\n");
+  }
 }
 
 

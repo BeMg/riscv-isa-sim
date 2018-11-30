@@ -26,3 +26,6 @@ for (int i=0; i<element_num; i++) {
 
 WRITE_RD(rst_sum);
 
+// Count SIMD insn
+
+SIMD_ADD1;

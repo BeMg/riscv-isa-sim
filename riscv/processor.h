@@ -141,7 +141,8 @@ struct state_t
   reg_t vctype[4];
   reg_t vctypev[32];
 
-
+  reg_t simd_count = 0;
+  reg_t simd_count_without_pack = 0;
 
   uint32_t fflags;
   uint32_t frm;

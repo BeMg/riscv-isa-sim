@@ -156,6 +156,8 @@ private:
 #define WRITE_VTYPEEN(value) STATE.vtypeen = value
 #define WRITE_VXCM(value) STATE.vxcm = value
 #define WRITE_VXRM(value) STATE.vxrm = value
+#define SIMD_ADD1 STATE.simd_count += 1
+#define SIMD_NOPK_ADD1 STATE.simd_count_without_pack += 1
 
 #define VRS1 READ_VREG(insn.rs1())
 #define VRS2 READ_VREG(insn.rs2())
