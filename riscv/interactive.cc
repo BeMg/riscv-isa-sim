@@ -71,6 +71,7 @@ void sim_t::interactive()
   funcs["fregs"] = &sim_t::interactive_fregs;
   funcs["fregd"] = &sim_t::interactive_fregd;
   funcs["vreg"] = &sim_t::interactive_vreg;
+  funcs["ic"] = &sim_t::interactive_simd_count;
   funcs["pc"] = &sim_t::interactive_pc;
   funcs["mem"] = &sim_t::interactive_mem;
   funcs["str"] = &sim_t::interactive_str;
@@ -123,6 +124,7 @@ void sim_t::interactive_help(const std::string& cmd, const std::vector<std::stri
     "pc <core>                       # Show current PC in <core>\n"
     "mem <hex addr>                  # Show contents of physical memory\n"
     "str <hex addr>                  # Show NUL-terminated C string\n"
+    "ic                              # Now Instruction and SIMD Instruction count\n"
     "until reg <core> <reg> <val>    # Stop when <reg> in <core> hits <val>\n"
     "until pc <core> <val>           # Stop when PC in <core> hits <val>\n"
     "until mem <addr> <val>          # Stop when memory <addr> becomes <val>\n"
@@ -334,6 +336,12 @@ void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::stri
 
   }  
 }
+
+void sim_t::interactive_simd_count(const std::string& cmd, const std::vector<std::string>& args)
+{
+  fprintf(stderr, "Test: %d\n", current_step);
+}
+
 
 reg_t sim_t::get_mem(const std::vector<std::string>& args)
 {
