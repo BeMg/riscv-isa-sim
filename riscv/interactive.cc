@@ -344,8 +344,9 @@ void sim_t::interactive_simd_count(const std::string& cmd, const std::vector<std
     processor_t *p = get_core(args[0]);
     int simd_count = p->get_state()->simd_count;
     int simd_count_without_pack = p->get_state()->simd_count_without_pack;
-    fprintf(stderr, "All_SIMD:\t%d/%d\n", simd_count, current_step); 
-    fprintf(stderr, "Without_PACK:\t%d/%d\n", simd_count_without_pack, current_step);  
+    int all_insn = p->get_state()->all_insn;
+    fprintf(stderr, "All_SIMD:\t%d/%d\n", simd_count, all_insn); 
+    fprintf(stderr, "Without_PACK:\t%d/%d\n", simd_count_without_pack, all_insn);  
   } else {
     fprintf(stderr, "Need core number\n");
   }

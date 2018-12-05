@@ -158,6 +158,7 @@ private:
 #define WRITE_VXRM(value) STATE.vxrm = value
 #define SIMD_ADD1 STATE.simd_count += 1
 #define SIMD_NOPK_ADD1 STATE.simd_count_without_pack += 1
+#define ALL_INSN_ADD1 STATE.all_insn += 1
 
 #define VRS1 READ_VREG(insn.rs1())
 #define VRS2 READ_VREG(insn.rs2())
@@ -170,6 +171,15 @@ private:
 #define VMASK insn.mask()
 #define SQRT(value) std::sqrt(value)
 
+#define GETMAT1ROW STATE.mat1_row
+#define GETMAT1COL STATE.mat1_col
+#define GETMAT2ROW STATE.mat2_row
+#define GETMAT2COL STATE.mat2_col
+
+#define SETMAT1ROW(value) STATE.mat1_row = value
+#define SETMAT1COL(value) STATE.mat1_col = value
+#define SETMAT2ROW(value) STATE.mat2_row = value
+#define SETMAT2COL(value) STATE.mat2_col = value
 
 #define INTTOFLOAT(value) *((float *)(&value))
 #define FLOATTOINT(value) *((int *)(&value))
