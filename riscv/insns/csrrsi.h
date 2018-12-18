@@ -6,3 +6,4 @@ if (write) {
 }
 WRITE_RD(sext_xlen(old));
 serialize();
+ALL_INSN_ADD1;

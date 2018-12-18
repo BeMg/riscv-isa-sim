@@ -7,3 +7,4 @@ if (isNaNF64UI(f64(FRS1).v) && isNaNF64UI(f64(FRS2).v))
 else
   WRITE_FRD(less || isNaNF64UI(f64(FRS2).v) ? FRS1 : FRS2);
 set_fp_exceptions;
+ALL_INSN_ADD1;

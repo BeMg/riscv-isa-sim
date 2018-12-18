@@ -7,3 +7,4 @@ if (xlen == 32) {
   require(insn.rvc_rd() != 0);
   WRITE_RD(MMU.load_int64(RVC_SP + insn.rvc_ldsp_imm()));
 }
+ALL_INSN_ADD1;

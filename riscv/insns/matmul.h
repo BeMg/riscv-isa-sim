@@ -64,3 +64,4 @@ if(mat1col == mat2row) {
 } else {
     fprintf(stderr, "ERROR: mat1col != mat2row\n");
 }
+ALL_INSN_ADD1;

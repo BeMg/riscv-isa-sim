@@ -6,3 +6,4 @@ if(rhs == 0)
   WRITE_RD(UINT64_MAX);
 else
   WRITE_RD(sext32(lhs / rhs));
+ALL_INSN_ADD1;

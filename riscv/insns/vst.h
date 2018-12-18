@@ -9,3 +9,4 @@ for (int32_t i=0; i<vl; i++) {
 for (int i=vl; i<MAXVL; i++) {
     src.data[i] = 0;
 }
+ALL_INSN_ADD1;

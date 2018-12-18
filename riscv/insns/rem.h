@@ -7,3 +7,4 @@ else if(lhs == INT64_MIN && rhs == -1)
   WRITE_RD(0);
 else
   WRITE_RD(sext_xlen(lhs % rhs));
+ALL_INSN_ADD1;

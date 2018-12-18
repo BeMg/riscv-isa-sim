@@ -7,3 +7,4 @@ if (xlen == 32) {
   require(insn.rvc_rd() != 0);
   WRITE_RD(sext32(RVC_RS1 + insn.rvc_imm()));
 }
+ALL_INSN_ADD1;

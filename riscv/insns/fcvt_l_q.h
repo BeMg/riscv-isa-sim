@@ -4,3 +4,4 @@ require_fp;
 softfloat_roundingMode = RM;
 WRITE_RD(f128_to_i64(f128(FRS1), RM, true));
 set_fp_exceptions;
+ALL_INSN_ADD1;

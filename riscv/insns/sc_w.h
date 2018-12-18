@@ -8,3 +8,4 @@ else
   WRITE_RD(1);
 
 MMU.yield_load_reservation();
+ALL_INSN_ADD1;

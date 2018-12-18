@@ -16,4 +16,4 @@ for(int i=0; i<vl; i++) {
     idx = idx + sz;
 }
 
-WRITE_VRD(tmp);
+WRITE_VRD(tmp);ALL_INSN_ADD1;

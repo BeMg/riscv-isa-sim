@@ -12,3 +12,4 @@ for (int i=vl; i<MAXVL; i++) {
 }
 
 WRITE_VRD(rst);
+ALL_INSN_ADD1;

@@ -25,3 +25,4 @@ for (int i=0; i<element_num; i++) {
 
 WRITE_RD(rst_sum);
 
+ALL_INSN_ADD1;

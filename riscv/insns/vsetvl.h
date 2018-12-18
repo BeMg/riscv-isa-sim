@@ -6,3 +6,4 @@ if (MAXVL > RS1) {
     WRITE_VL(MAXVL);
     WRITE_RD(sext_xlen(MAXVL));
 }
+ALL_INSN_ADD1;

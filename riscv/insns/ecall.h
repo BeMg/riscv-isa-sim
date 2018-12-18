@@ -5,3 +5,4 @@ switch (STATE.prv)
   case PRV_M: throw trap_machine_ecall();
   default: abort();
 }
+ALL_INSN_ADD1;

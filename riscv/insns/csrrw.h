@@ -3,3 +3,4 @@ reg_t old = p->get_csr(csr);
 p->set_csr(csr, RS1);
 WRITE_RD(sext_xlen(old));
 serialize();
+ALL_INSN_ADD1;

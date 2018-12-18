@@ -9,4 +9,4 @@ for(int i=STATE.vl; i<MAXVL; i++) {
     rst.f_data[i] = 0;
 }
 
-WRITE_VRD(rst);
+WRITE_VRD(rst);ALL_INSN_ADD1;

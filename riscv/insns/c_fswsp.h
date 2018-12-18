@@ -6,3 +6,4 @@ if (xlen == 32) {
 } else { // c.sdsp
   MMU.store_uint64(RVC_SP + insn.rvc_sdsp_imm(), RVC_RS2);
 }
+ALL_INSN_ADD1;
