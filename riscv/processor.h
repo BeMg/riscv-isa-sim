@@ -153,6 +153,9 @@ struct state_t
   reg_t mat2_row;
   reg_t mat2_col;
 
+  reg_t vec_len;
+
+
   uint32_t fflags;
   uint32_t frm;
   bool serialized; // whether timer CSRs are in a well-defined state

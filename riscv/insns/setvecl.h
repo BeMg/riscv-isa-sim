@@ -1,0 +1,1 @@
+SETVEC_LEN(RD);

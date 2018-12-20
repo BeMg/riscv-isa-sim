@@ -1,6 +1,9 @@
-// fprintf(stderr,"In matmul\n");
-// fprintf(stderr, "Check mat1: %dx%d\n", GETMAT1ROW, GETMAT1COL);
-// fprintf(stderr, "Check mat2: %dx%d\n", GETMAT2ROW, GETMAT2COL);
+
+
+/******
+ * Need matrix size, and matrix start point: RD, RS1, RS2 
+*******/
+
 
 int mat1row = GETMAT1ROW;
 int mat1col = GETMAT1COL;
@@ -64,4 +67,5 @@ if(mat1col == mat2row) {
 } else {
     fprintf(stderr, "ERROR: mat1col != mat2row\n");
 }
+
 ALL_INSN_ADD1;

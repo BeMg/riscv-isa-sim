@@ -171,6 +171,13 @@ private:
 #define VMASK insn.mask()
 #define SQRT(value) std::sqrt(value)
 
+#define SETVEC_LEN(value) STATE.vec_len = value
+#define GETVEC_LEN STATE.vec_len
+
+#define EXP(value) exp(value)
+
+#define SP READ_REG(2)
+
 #define GETMAT1ROW STATE.mat1_row
 #define GETMAT1COL STATE.mat1_col
 #define GETMAT2ROW STATE.mat2_row
