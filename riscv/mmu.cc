@@ -93,7 +93,7 @@ void mmu_t::load_slow_path(reg_t addr, reg_t len, uint8_t* bytes)
   reg_t paddr = translate(addr, LOAD);
 
   if (auto host_addr = sim->addr_to_mem(paddr)) {
-    memcpy(bytes, host_addr, len);
+    memcpy(bytes, host_addr, len); 
     if (tracer.interested_in_range(paddr, paddr + PGSIZE, LOAD))
       tracer.trace(paddr, len, LOAD);
     else

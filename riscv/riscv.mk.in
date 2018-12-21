@@ -365,8 +365,10 @@ riscv_insn_list = \
 	pktt16 \
 	ksll16 \
 	ksll8 \
-	setmat1 \
-	setmat2 \
+	setmat1row \
+	setmat1col \
+	setmat2row \
+	setmat2col \
 	matmul \
 	setvecl \
 	fvecadd \

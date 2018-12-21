@@ -12,20 +12,46 @@ int mat2col = GETMAT2COL;
 
 // Check mat1col == mat2row
 
+
 int mat1_len = mat1row * mat1col;
-float mat1[mat1_len];
 int mat2_len = mat2row * mat2col;
-float mat2[mat2_len];
+// fprintf(stderr, "sharp: %d %d %d %d\n", mat1row, mat1col, mat2row, mat2col);
+// fprintf(stderr, "len: %d %d\n", mat1_len, mat2_len);
 
-for(int i=0; i<mat1_len; i++) {
-    int tmp = MMU.load_int32(RS1 + 4 * i);
-    mat1[i] = *((float *)(&tmp));
-}
 
-for(int i=0; i<mat2_len; i++) {
-    int tmp = MMU.load_int32(RS2 + 4 * i);
-    mat2[i] = *((float *)(&tmp));
-}
+float* mat1;
+float* mat2;
+float* mat3 = (float *)malloc(sizeof(float) * mat1row * mat2col);
+
+
+mat1 = MMU.many_load_int32(RS1, mat1_len);
+
+mat2 = MMU.many_load_int32(RS2, mat2_len);
+
+// for(int i=0; i<mat1_len; i++) {
+//     fprintf(stderr, "%f, ", mat1[i]);
+// }
+// fprintf(stderr, "\n");
+
+// for(int i=0; i<mat2_len; i++) {
+//     fprintf(stderr, "%f, ", mat2[i]);
+// }
+// fprintf(stderr, "\n");
+
+
+// for(int i=0; i<mat1_len; i++) {
+//     int tmp = MMU.load_int32(RS1 + 4 * i);
+//     mat1[i] = *((float *)(&tmp));
+// }
+
+
+// for(int i=0; i<mat2_len; i++) {
+//     int tmp = MMU.load_int32(RS2 + 4 * i);
+//     mat2[i] = *((float *)(&tmp));
+// }
+
+// fprintf(stderr, "Finish\n");
+
 
 
 // for(int i=0; i<mat1_len; i++) {
@@ -40,7 +66,7 @@ for(int i=0; i<mat2_len; i++) {
 
 // fprintf(stderr, "\n");
 
-float mat3[mat1row * mat2col];
+// std::vector<float> mat3;
 for(int i=0; i<mat1row * mat2col; i++) {
     mat3[i] = 0.0;
 }
@@ -55,9 +81,16 @@ if(mat1col == mat2row) {
             }
         }
     }
+    
+    // for(int i=0; i<mat1row * mat2col; i++) {
+    //     fprintf(stderr, "%f, ", mat3[i]);
+    // }
+    // fprintf(stderr, "\n");
+
+    MMU.many_store_int32(RD, mat1row * mat2col, mat3);
     for(int i=0; i<mat1row * mat2col; i++) {
-        int tmp = *((int *)(&mat3[i]));
-        MMU.store_uint32(RD + 4 * i, tmp);
+        // int tmp = *((int *)(&mat3[i]));
+        // MMU.store_uint32(RD + 4 * i, tmp);
         // fprintf(stderr, "%f, ", mat3[i]);
     }
     // fprintf(stderr, "\n");
@@ -67,5 +100,9 @@ if(mat1col == mat2row) {
 } else {
     fprintf(stderr, "ERROR: mat1col != mat2row\n");
 }
+
+free(mat1);
+free(mat2);
+free(mat3);
 
 ALL_INSN_ADD1;

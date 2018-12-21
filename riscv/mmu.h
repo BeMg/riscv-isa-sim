@@ -285,6 +285,23 @@ public:
 #endif
   }
 
+  float* many_load_int32(reg_t addr, int len) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    
+    float *test = (float *)malloc(sizeof(float) * len);
+    memcpy(test, host_addr, sizeof(float) * len);
+
+
+    return test;
+  }
+
+  void many_store_int32(reg_t addr, int len, float *val) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    memcpy(host_addr, val, sizeof(float) * len);
+  }
+
 private:
   simif_t* sim;
   processor_t* proc;

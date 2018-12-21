@@ -1,1 +1,1 @@
-SETVEC_LEN(RD);
+SETVEC_LEN(insn.i_imm());
