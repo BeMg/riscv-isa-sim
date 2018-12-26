@@ -75,25 +75,13 @@ if(mat1col == mat2row) {
     for(int i=0; i<mat1row; i++) {
         for(int k=0; k<mat2col; k++) {
             for(int j=0; j<mat1col; j++) {
-                // fprintf(stderr, "%d = %d x %d\n", i*mat1row+k, i*mat1col+j, j*mat2col+k);
-                // fprintf(stderr, "%f += %f x %f\n", mat3[i*mat1row+k], mat1[i*mat1row+j], mat2[j*mat2row+k]);
                 mat3[i*mat1row+k] += mat1[i*mat1col+j] * mat2[j*mat2col+k];
             }
         }
     }
     
-    // for(int i=0; i<mat1row * mat2col; i++) {
-    //     fprintf(stderr, "%f, ", mat3[i]);
-    // }
-    // fprintf(stderr, "\n");
 
     MMU.many_store_int32(RD, mat1row * mat2col, mat3);
-    for(int i=0; i<mat1row * mat2col; i++) {
-        // int tmp = *((int *)(&mat3[i]));
-        // MMU.store_uint32(RD + 4 * i, tmp);
-        // fprintf(stderr, "%f, ", mat3[i]);
-    }
-    // fprintf(stderr, "\n");
 
 
     
