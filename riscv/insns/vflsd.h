@@ -1,2 +1,0 @@
-
-ALL_INSN_ADD1;
