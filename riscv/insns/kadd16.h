@@ -18,7 +18,8 @@ int rst[element_num];
 // P.S. 0x8000 is mask for take number first bits to eheck sign.
 
 for (int i=0; i<element_num; i++) {
-    if( ((rs1[i]&0x8000) == rs2[i]&0x8000) && ((rs1[i] + rs2[i])&0x8000 != (rs1[i]&0x8000)) ) { 
+    if( ( (rs1[i]&0x8000) == (rs2[i]&0x8000)) && 
+        ( (rs1[i] + rs2[i])&0x8000 != (rs1[i]&0x8000)) ) { 
         if ((rs1[i]&0x8000) == 0) {
             rst[i] = 0b0111111111111111;
         } else {
@@ -28,8 +29,6 @@ for (int i=0; i<element_num; i++) {
         rst[i] = (rs1[i]+rs2[i]) & 0xffff;
     }
 }
-// rst[0] = (rs1[0]+rs2[0]) & 0xffff;
-// rst[1] = (rs1[1]+rs2[1]) & 0xffff;
 
 int rst_sum = 0;
 

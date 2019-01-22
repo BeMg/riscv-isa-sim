@@ -20,11 +20,23 @@ int rst[element_num];
 for (int i=0; i<element_num; i++) {
     // Maybe only this case 0x80 * 0x80 will overflow.
     if(rs1[i]!=0x80 || rs2[i] != 0x80) {
-        rst[i] = (rs1[i] * rs2[i]) >> 7;
+        int tmp_rs1 = rs1[i];
+        int tmp_rs2 = rs2[i];
+
+        // extend zero for mul on negative number.
+        if(tmp_rs1 & 0x80) {
+            tmp_rs1 = tmp_rs1 | 0xff80;
+        }
+        if(tmp_rs2 & 0x80) {
+            tmp_rs2 = tmp_rs2 | 0xff80;
+        }
+        
+        rst[i] = (tmp_rs1 * tmp_rs2) >> 7;
     } else {
         rst[i] = 0x7f;
         overflow_flag = true;
     }
+    rst[i] = rst[i] & 0xff;
 }
 
 int rst_sum = 0;

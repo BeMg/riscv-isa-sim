@@ -22,7 +22,7 @@ for(int i=0; i<element_num; i++) {
         if( !(rs1[i] & 0x80) && rst[i] > 0x7f) {
             rst[i] = 0x7f;
             overflow_flag = true;
-        } else if((rs1[i] & 0x80) && rst[i] > 128) {
+        } else if((rs1[i] & 0x80) && !(rst[i] & 0x80)) {
             rst[i] = 0x80;
             overflow_flag = true;
         }

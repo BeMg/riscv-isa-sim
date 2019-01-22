@@ -1,4 +1,3 @@
-
 int element_size = 16;
 int element_num = int(32 / element_size);
 
@@ -22,7 +21,7 @@ for(int i=0; i<element_num; i++) {
         if( !(rs1[i] & 0x8000) && rst[i] > 0x7fff) {
             rst[i] = 0x7fff;
             overflow_flag = true;
-        } else if((rs1[i] & 0x8000) && rst[i] > 32768) {
+        } else if((rs1[i] & 0x8000) && !(rst[i] & 0x8000)) {
             rst[i] = 0x8000;
             overflow_flag = true;
         }

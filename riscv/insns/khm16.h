@@ -18,11 +18,22 @@ int rst[element_num];
 for (int i=0; i<element_num; i++) {
     // Maybe only this case 0x8000 * 0x8000 will overflow.
     if(rs1[i]!=0x8000 || rs2[i] != 0x8000) {
-        rst[i] = (rs1[i] * rs2[i]) >> 15;
+        int tmp_rs1 = rs1[i];
+        int tmp_rs2 = rs2[i];
+        // extend zero for mul on negative number
+        if(tmp_rs1 & 0x8000) {
+            tmp_rs1 = tmp_rs1 | 0xffff0000;
+        }
+        if(tmp_rs2 & 0x8000) {
+            tmp_rs2 = tmp_rs2 | 0xffff0000;
+        }
+
+        rst[i] = (tmp_rs1 * tmp_rs2) >> 15;
     } else {
         rst[i] = 0x7fff;
         overflow_flag = true;
     }
+    rst[i] = rst[i] & 0xffff;
 }
 
 
