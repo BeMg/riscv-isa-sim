@@ -290,34 +290,6 @@ riscv_insn_list = \
 	wfi \
 	xor \
 	xori \
-	vlh \
-	vlw \
-	vld \
-	vsh \
-	vsw \
-	vsd \
-	vsetvl \
-	vconfig \
-	vfadd_s \
-	vfsub_s \
-	vfmul_s \
-	vfdiv_s \
-	vfsqrt_s \
-	vfmin_s \
-	vfmax_s \
-	vfeq_s \
-	vflt_s \
-	vfle_s \
-	vfadd_d \
-	vfsub_d \
-	vfmul_d \
-	vfdiv_d \
-	vfsqrt_d \
-	vfmin_d \
-	vfmax_d \
-	vfeq_d \
-	vflt_d \
-	vfle_d \
 	add16 \
 	radd16 \
 	uradd16 \
@@ -373,6 +345,20 @@ riscv_insn_list = \
 	setvecl \
 	fvecadd \
 	sigmoid \
+	vsetvl \
+	vadd_vv \
+	vadd_vs \
+	vadd_vi \
+	vfadd_vv \
+	vfadd_vf \
+	vmul_vv \
+	vmul_vs \
+	vfmul_vv \
+	vfmul_vf \
+	vredsum_vs \
+	vfredsum_vs \
+	vle \
+	vse \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

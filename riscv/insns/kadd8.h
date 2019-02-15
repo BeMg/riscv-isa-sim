@@ -13,7 +13,7 @@ for(int i=0; i<element_num; i++) {
 int rst[element_num];
 
 for (int i=0; i<element_num; i++) {
-    if( ((rs1[i]&0x80) == rs2[i]&0x80) && ((rs1[i] + rs2[i])&0x80 != (rs1[i]&0x80)) ) { 
+    if( ((rs1[i]&0x80) == rs2[i]&0x80) && (((rs1[i] + rs2[i])&0x80) != (rs1[i]&0x80)) ) { 
         if ((rs1[i]&0x80) == 0) {
             rst[i] = 0b01111111;
         } else {

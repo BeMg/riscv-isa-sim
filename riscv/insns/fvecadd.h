@@ -31,8 +31,8 @@ float *vec1;
 float *vec2;
 float *vec3 = (float*) malloc(sizeof(float) * len);
 
-vec1 = MMU.many_load_int32(RS1, len);
-vec2 = MMU.many_load_int32(RS2, len);
+vec1 = (float*)MMU.many_load_int32(RS1, len);
+vec2 = (float*)MMU.many_load_int32(RS2, len);
 
 for(int i=0; i<len; i++) {
     vec3[i] = vec1[i] + vec2[i];

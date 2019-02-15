@@ -285,13 +285,42 @@ public:
 #endif
   }
 
-  float* many_load_int32(reg_t addr, int len) {
+  uint8_t* many_load_int8(reg_t addr, int len) {
     reg_t paddr = translate(addr, LOAD);
     auto host_addr = sim->addr_to_mem(paddr);
     
-    float *test = (float *)malloc(sizeof(float) * len);
-    memcpy(test, host_addr, sizeof(float) * len);
+    uint8_t *test = (uint8_t *)malloc(sizeof(uint8_t) * len);
+    memcpy(test, host_addr, sizeof(uint8_t) * len);
 
+    return test;
+  }
+
+  uint16_t* many_load_int16(reg_t addr, int len) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    
+    uint16_t *test = (uint16_t *)malloc(sizeof(uint16_t) * len);
+    memcpy(test, host_addr, sizeof(uint16_t) * len);
+
+    return test;
+  }
+
+  uint32_t* many_load_int32(reg_t addr, int len) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    
+    uint32_t *test = (uint32_t *)malloc(sizeof(uint32_t) * len);
+    memcpy(test, host_addr, sizeof(uint32_t) * len);
+
+    return test;
+  }
+
+  uint64_t* many_load_int64(reg_t addr, int len) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    
+    uint64_t *test = (uint64_t *)malloc(sizeof(uint64_t) * len);
+    memcpy(test, host_addr, sizeof(uint64_t) * len);
 
     return test;
   }

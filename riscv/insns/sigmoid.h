@@ -21,7 +21,7 @@ int len = GETVEC_LEN;
 float * vec1;
 float * vec2 = (float*) malloc(sizeof(float) * len);
 
-vec1 = MMU.many_load_int32(RS1, len);
+vec1 = (float *)MMU.many_load_int32(RS1, len);
 
 for(int i=0; i<len; i++) {
     vec2[i] = 1 / (1 + EXP(-vec1[i]));

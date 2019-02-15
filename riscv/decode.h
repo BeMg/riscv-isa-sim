@@ -98,6 +98,8 @@ public:
   uint64_t imm3_ld() { return x(29, 3); }
   uint64_t imm3_st() { return x(9, 3); }
 
+  uint64_t imm7_ld() { return x(24, 5) + (x(31, 2) << 4); }
+  uint64_t imm7_sd() { return x(24, 5) + (x(10, 2) << 4); } 
 
   int64_t rvc_imm() { return x(2, 5) + (xs(12, 1) << 5); }
   int64_t rvc_zimm() { return x(2, 5) + (x(12, 1) << 5); }
@@ -151,6 +153,8 @@ private:
 #define RD READ_REG(insn.rd())
 #define WRITE_RD(value) WRITE_REG(insn.rd(), value)
 #define WRITE_VL(value) STATE.vl = value
+#define WRITE_VTYPE(value) STATE.vtype = value
+#define GET_SEW (STATE.vtype >> 2)&0b111
 #define WRITE_VREGMAX(value) STATE.vregmax = value
 #define WRITE_VEMAXW(value) STATE.vemaxw = value
 #define WRITE_VTYPEEN(value) STATE.vtypeen = value

@@ -287,25 +287,9 @@ void sim_t::interactive_vreg(const std::string& cmd, const std::vector<std::stri
     {
       fprintf(stderr, "vl: %d\n", p->get_state()->vl);
     } 
-    else if (args[1] == "vregmax") 
+    else if (args[1] == "vtype") 
     {
-      fprintf(stderr, "vregmax: %d\n", p->get_state()->vregmax);
-    }
-    else if (args[1] == "vemaxw") 
-    {
-      fprintf(stderr, "vemaxw: %d\n", p->get_state()->vemaxw);
-    }
-    else if (args[1] == "vtypeen") 
-    {
-      fprintf(stderr, "vtypeen: %d\n", p->get_state()->vtypeen);
-    }
-    else if (args[1] == "vxcm") 
-    {
-      fprintf(stderr, "vxcm: %d\n", p->get_state()->vxcm);
-    }
-    else if (args[1] == "vxrm") 
-    {
-      fprintf(stderr, "vxrm: %d\n", p->get_state()->vxrm);
+      fprintf(stderr, "vtype: %d\n", p->get_state()->vtype);
     }
     else if (args[1] == "v") 
     {

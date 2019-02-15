@@ -126,20 +126,7 @@ struct state_t
 
   // Add vector extension CSR
   reg_t vl;
-  reg_t vregmax;
-  reg_t vemaxw;
-  reg_t vtypeen;
-  reg_t vxcm;
-  reg_t vxrm;
-
-  reg_t vxsat;
-  reg_t vcsr;
-  
-  reg_t vcnpred;
-  
-  reg_t vcmaxw[4];
-  reg_t vctype[4];
-  reg_t vctypev[32];
+  reg_t vtype;
 
   // counter
   reg_t all_insn = 0;

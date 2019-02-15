@@ -24,9 +24,9 @@ float* mat2;
 float* mat3 = (float *)malloc(sizeof(float) * mat1row * mat2col);
 
 
-mat1 = MMU.many_load_int32(RS1, mat1_len);
+mat1 = (float*)MMU.many_load_int32(RS1, mat1_len);
 
-mat2 = MMU.many_load_int32(RS2, mat2_len);
+mat2 = (float*)MMU.many_load_int32(RS2, mat2_len);
 
 // for(int i=0; i<mat1_len; i++) {
 //     fprintf(stderr, "%f, ", mat1[i]);
