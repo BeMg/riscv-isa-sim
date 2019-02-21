@@ -38,7 +38,7 @@ for(int i=0; i<len; i++) {
     vec3[i] = vec1[i] + vec2[i];
 }
 
-MMU.many_store_int32(RD, len, vec3);
+MMU.many_store_int32(RD, len, (uint32_t*)vec3);
 
 free(vec1);
 free(vec2);

@@ -97,7 +97,7 @@ public:
   uint64_t mask_lo() { return x(12, 2); }
   uint64_t imm3_ld() { return x(29, 3); }
   uint64_t imm3_st() { return x(9, 3); }
-
+  uint64_t mask() { return x(25, 1); }
   uint64_t imm7_ld() { return x(24, 5) + (x(31, 2) << 4); }
   uint64_t imm7_sd() { return x(24, 5) + (x(10, 2) << 4); } 
 

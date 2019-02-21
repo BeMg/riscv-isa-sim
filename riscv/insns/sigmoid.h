@@ -27,7 +27,7 @@ for(int i=0; i<len; i++) {
     vec2[i] = 1 / (1 + EXP(-vec1[i]));
 }
 
-MMU.many_store_int32(RD, len, vec2);
+MMU.many_store_int32(RD, len, (uint32_t*)vec2);
 
 free(vec1);
 free(vec2);

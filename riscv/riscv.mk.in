@@ -359,6 +359,12 @@ riscv_insn_list = \
 	vfredsum_vs \
 	vle \
 	vse \
+	vext_x_s \
+	vmv_s_x \
+	vslideup_vx \
+	vslideup_vi \
+	vslidedown_vx \
+	vslidedown_vi \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

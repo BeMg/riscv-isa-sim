@@ -81,7 +81,7 @@ if(mat1col == mat2row) {
     }
     
 
-    MMU.many_store_int32(RD, mat1row * mat2col, mat3);
+    MMU.many_store_int32(RD, mat1row * mat2col, (uint32_t*)mat3);
 
 
     

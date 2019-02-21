@@ -325,11 +325,30 @@ public:
     return test;
   }
 
-  void many_store_int32(reg_t addr, int len, float *val) {
+  void many_store_int8(reg_t addr, int len, uint8_t *val) {
     reg_t paddr = translate(addr, LOAD);
     auto host_addr = sim->addr_to_mem(paddr);
-    memcpy(host_addr, val, sizeof(float) * len);
+    memcpy(host_addr, val, sizeof(uint8_t) * len);
   }
+
+  void many_store_int16(reg_t addr, int len, uint16_t *val) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    memcpy(host_addr, val, sizeof(uint16_t) * len);
+  }
+
+  void many_store_int32(reg_t addr, int len, uint32_t *val) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    memcpy(host_addr, val, sizeof(uint32_t) * len);
+  }
+
+  void many_store_int64(reg_t addr, int len, uint64_t *val) {
+    reg_t paddr = translate(addr, LOAD);
+    auto host_addr = sim->addr_to_mem(paddr);
+    memcpy(host_addr, val, sizeof(uint64_t) * len);
+  }
+
 
 private:
   simif_t* sim;
