@@ -31,3 +31,6 @@ MMU.many_store_int32(RD, len, (uint32_t*)vec2);
 
 free(vec1);
 free(vec2);
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

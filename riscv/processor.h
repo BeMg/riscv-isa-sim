@@ -132,6 +132,13 @@ struct state_t
   reg_t all_insn = 0;
   reg_t simd_count = 0;
   reg_t simd_count_without_pack = 0;
+  
+  reg_t all_cycle = 0;
+  reg_t all_count = 0;
+  reg_t p_ext_count = 0;
+  reg_t p_ext_cycle = 0;
+  reg_t v_ext_count = 0;
+  reg_t v_ext_cycle = 0;
 
   // Matrix mul state
 

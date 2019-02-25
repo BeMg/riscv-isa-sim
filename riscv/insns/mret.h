@@ -8,3 +8,7 @@ s = set_field(s, MSTATUS_MPP, PRV_U);
 p->set_privilege(prev_prv);
 p->set_csr(CSR_MSTATUS, s);
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

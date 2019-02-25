@@ -7,3 +7,7 @@ if(rhs == 0)
 else
   WRITE_RD(sext32(lhs / rhs));
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

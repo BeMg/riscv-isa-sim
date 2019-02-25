@@ -7,3 +7,7 @@ if (insn.rvc_rd() == 2) { // c.addi16sp
   WRITE_RD(insn.rvc_imm() << 12);
 }
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

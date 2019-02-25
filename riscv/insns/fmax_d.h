@@ -8,3 +8,7 @@ else
   WRITE_FRD(greater || isNaNF64UI(f64(FRS2).v) ? FRS1 : FRS2);
 set_fp_exceptions;
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

@@ -326,11 +326,15 @@ void sim_t::interactive_simd_count(const std::string& cmd, const std::vector<std
 {
   if(args.size() == 1) {
     processor_t *p = get_core(args[0]);
-    int simd_count = p->get_state()->simd_count;
-    int simd_count_without_pack = p->get_state()->simd_count_without_pack;
-    int all_insn = p->get_state()->all_insn;
-    fprintf(stderr, "All_SIMD:\t%d/%d\n", simd_count, all_insn); 
-    fprintf(stderr, "Without_PACK:\t%d/%d\n", simd_count_without_pack, all_insn);  
+    auto all_insn_count = p->get_state()->all_count;
+    auto all_insn_cycle = p->get_state()->all_cycle;
+    auto P_count = p->get_state()->p_ext_count;
+    auto P_cycle = p->get_state()->p_ext_cycle;
+    auto V_count = p->get_state()->v_ext_count;
+    auto V_cycle = p->get_state()->v_ext_cycle;
+    fprintf(stderr, "count P/V/ALL: %lu/%lu/%lu\n", P_count, V_count, all_insn_count); 
+    fprintf(stderr, "cycle P/V/ALL: %lu/%lu/%lu\n", P_cycle, V_count, all_insn_cycle); 
+      
   } else {
     fprintf(stderr, "Need core number\n");
   }

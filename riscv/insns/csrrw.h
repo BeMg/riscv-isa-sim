@@ -4,3 +4,7 @@ p->set_csr(csr, RS1);
 WRITE_RD(sext_xlen(old));
 serialize();
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);

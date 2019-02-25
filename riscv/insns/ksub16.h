@@ -1,5 +1,5 @@
 int element_size = 16;
-int element_num = int(32 / element_size);
+int element_num = int(64 / element_size);
 
 int rs1[element_num];
 int rs2[element_num];
@@ -43,3 +43,9 @@ WRITE_RD(rst_sum);
 
 SIMD_ADD1;
 SIMD_NOPK_ADD1;ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);
+P_EXT_count;
+P_EXT_cycle(1);

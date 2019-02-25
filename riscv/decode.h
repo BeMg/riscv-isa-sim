@@ -164,6 +164,14 @@ private:
 #define SIMD_NOPK_ADD1 STATE.simd_count_without_pack += 1
 #define ALL_INSN_ADD1 STATE.all_insn += 1
 
+#define ALL_INSN_count STATE.all_count += 1
+#define ALL_INSN_cycle(value) STATE.all_cycle += value
+#define P_EXT_count STATE.p_ext_count += 1
+#define P_EXT_cycle(value) STATE.p_ext_cycle += value
+#define V_EXT_count STATE.v_ext_count += 1
+#define V_EXT_cycle(value) STATE.v_ext_cycle += value
+
+
 #define VRS1 READ_VREG(insn.rs1())
 #define VRS2 READ_VREG(insn.rs2())
 #define VRRD READ_VREG(insn.rd())

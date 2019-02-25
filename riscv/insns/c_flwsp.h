@@ -8,3 +8,7 @@ if (xlen == 32) {
   WRITE_RD(MMU.load_int64(RVC_SP + insn.rvc_ldsp_imm()));
 }
 ALL_INSN_ADD1;
+
+
+ALL_INSN_count;
+ALL_INSN_cycle(1);
