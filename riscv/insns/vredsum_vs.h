@@ -30,7 +30,8 @@ WRITE_RD(sext_xlen(rst));
 
 
 
+
 ALL_INSN_count;
-ALL_INSN_cycle(1);
 V_EXT_count;
 V_EXT_cycle(3);
+ALL_INSN_cycle(3);

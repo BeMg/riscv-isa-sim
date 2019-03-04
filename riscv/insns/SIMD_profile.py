@@ -189,15 +189,18 @@ for file_path in file_name:
     with open(file_path, "w") as f:
         f.write(all_file + "\n")
         f.write("ALL_INSN_count;\n")
-        f.write("ALL_INSN_cycle(1);\n")
         if insn_name not in insn_category:
+            f.write("ALL_INSN_cycle(1);\n")
             pass
         elif insn_category[insn_name] == 'V':
             f.write("V_EXT_count;\n")
             f.write("V_EXT_cycle({});\n".format(cycle_count[insn_name]))
+            f.write("ALL_INSN_cycle({});\n".format(cycle_count[insn_name]))
         elif insn_category[insn_name] == 'P':
             f.write("P_EXT_count;\n")
             f.write("P_EXT_cycle({});\n".format(cycle_count[insn_name]))
+            f.write("ALL_INSN_cycle({});\n".format(cycle_count[insn_name]))
         else:
             pass
+            
     

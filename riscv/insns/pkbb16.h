@@ -37,7 +37,8 @@ WRITE_RD(rst_sum);
 SIMD_ADD1;ALL_INSN_ADD1;
 
 
+
 ALL_INSN_count;
-ALL_INSN_cycle(1);
 P_EXT_count;
 P_EXT_cycle(2);
+ALL_INSN_cycle(2);
