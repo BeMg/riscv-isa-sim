@@ -33,5 +33,9 @@ free(vec1);
 free(vec2);
 
 
+
+
+
+
 ALL_INSN_count;
 ALL_INSN_cycle(1);

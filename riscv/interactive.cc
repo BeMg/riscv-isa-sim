@@ -333,7 +333,7 @@ void sim_t::interactive_simd_count(const std::string& cmd, const std::vector<std
     auto V_count = p->get_state()->v_ext_count;
     auto V_cycle = p->get_state()->v_ext_cycle;
     fprintf(stderr, "count P/V/ALL: %lu/%lu/%lu\n", P_count, V_count, all_insn_count); 
-    fprintf(stderr, "cycle P/V/ALL: %lu/%lu/%lu\n", P_cycle, V_count, all_insn_cycle); 
+    fprintf(stderr, "cycle P/V/ALL: %lu/%lu/%lu\n", P_cycle, V_cycle, all_insn_cycle); 
       
   } else {
     fprintf(stderr, "Need core number\n");

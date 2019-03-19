@@ -365,6 +365,8 @@ riscv_insn_list = \
 	vslideup_vi \
 	vslidedown_vx \
 	vslidedown_vi \
+	vlxe \
+	vsxe \
 
 riscv_gen_srcs = \
 	$(addsuffix .cc,$(riscv_insn_list))

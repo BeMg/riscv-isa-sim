@@ -9,19 +9,22 @@ vector_ext_insn = glob.glob("./v*.h")
 # category -> int
 insn_category = {
     'int_alu': 1,
+    'int_mul': 3,
     'float_alu': 2,
     'mem': 3,
     'V_SIMD_int_alu': 3,
+    'V_SIMD_int_mul': 6,
     'V_SIMD_float_alu': 3,
     'V_SIMD_permuation': 3,
     'V_SIMD_int_reduction': 3,
     'V_SIMD_float_reduction': 3,
-    'V_SIMD_mem': 3,
+    'V_SIMD_mem': 6,
     'V_SIMD_setting': 3, 
     'P_SIMD_int_alu': 1,
+    'P_SIMD_int_mul': 1,
     'P_SIMD_float_alu': 1,
-    'P_SIMD_permuation': 2,
-    'P_SIMD_int_reduction': 3
+    'P_SIMD_permuation': 1,
+    'P_SIMD_int_reduction': 1
 }
 
 # insn -> int
@@ -37,6 +40,8 @@ cycle_count = {
     'vfredsum_vs': insn_category['V_SIMD_float_reduction'],
     'vle': insn_category['V_SIMD_mem'],
     'vse': insn_category['V_SIMD_mem'],
+    'vlex': insn_category['V_SIMD_mem'],
+    'vsex': insn_category['V_SIMD_mem'],
     'vmul_vs': insn_category['V_SIMD_int_alu'],
     'vmul_vv': insn_category['V_SIMD_int_alu'],
     'vsetvl': insn_category['V_SIMD_setting'],
@@ -78,7 +83,7 @@ cycle_count = {
     'ursub16': insn_category['P_SIMD_int_alu'],
     'add8': insn_category['P_SIMD_int_alu'],
     'kadd8': insn_category['P_SIMD_int_alu'],
-    'khm8': insn_category['P_SIMD_int_alu'],
+    'khm8': insn_category['P_SIMD_int_mul'],
     'ksll8': insn_category['P_SIMD_int_alu'],
     'ksub8': insn_category['P_SIMD_int_alu'],
     'radd8': insn_category['P_SIMD_int_alu'],
@@ -91,7 +96,17 @@ cycle_count = {
     'umax8': insn_category['P_SIMD_int_reduction'],
     'umin8': insn_category['P_SIMD_int_reduction'],
     'uradd8': insn_category['P_SIMD_int_alu'],
-    'ursub8': insn_category['P_SIMD_int_alu']
+    'ursub8': insn_category['P_SIMD_int_alu'],
+    'lui': insn_category['int_alu'],
+    'auipc': insn_category['int_alu'],
+    'jal': insn_category['int_alu'],
+    'jalr': insn_category['int_alu'],
+    'beq': insn_category['int_alu'],
+    'bne': insn_category['int_alu'],
+    'lw': insn_category['mem'],
+    'ld': insn_category['mem'],
+    'sw': insn_category['mem'],
+    'sd': insn_category['mem'],
 }
 
 insn_category = {
@@ -115,6 +130,8 @@ insn_category = {
     'vslidedown_vx': 'V',
     'vslideup_vi': 'V',
     'vslideup_vx': 'V',
+    'vlex': 'V',
+    'vsex': 'V',
     'add16': 'P',
     'cras16': 'P',
     'crsa16': 'P',
@@ -160,7 +177,17 @@ insn_category = {
     'umax8': 'P',
     'umin8': 'P',
     'uradd8': 'P',
-    'ursub8': 'P'
+    'ursub8': 'P',
+    'lui': 'B',
+    'auipc': 'B',
+    'jal': 'B',
+    'jalr': 'B',
+    'beq': 'B',
+    'bne': 'B',
+    'lw': 'B',
+    'ld': 'B',
+    'sw': 'B',
+    'sd': 'B',
 }
 
 marco_function = ['ALL_INSN_count', 'ALL_INSN_cycle', 'P_EXT_count', 'P_EXT_cycle', 'V_EXT_count', 'V_EXT_cycle']
@@ -184,7 +211,7 @@ for file_path in file_name:
             else:
                 all_file += line
 
-    insn_name = file_path.replace(".h", "")[2:];
+    insn_name = file_path.replace(".h", "")[2:]
     
     with open(file_path, "w") as f:
         f.write(all_file + "\n")
@@ -192,6 +219,8 @@ for file_path in file_name:
         if insn_name not in insn_category:
             f.write("ALL_INSN_cycle(1);\n")
             pass
+        elif insn_category[insn_name] == 'B':
+            f.write("ALL_INSN_cycle({});\n".format(cycle_count[insn_name]))
         elif insn_category[insn_name] == 'V':
             f.write("V_EXT_count;\n")
             f.write("V_EXT_cycle({});\n".format(cycle_count[insn_name]))
