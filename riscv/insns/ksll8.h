@@ -16,7 +16,7 @@ int sa = RS2 & 0b111; // RS2[2:0]
 
 bool overflow_flag = false;
 
-int mask_for_underflow = 0xff << (8 - sa);
+int mask_for_underflow = (0xff << (8 - sa))&0xff;
 
 for(int i=0; i<element_num; i++) {
     if(sa != 0) {
@@ -47,6 +47,13 @@ WRITE_RD(rst_sum);
 
 SIMD_ADD1;
 SIMD_NOPK_ADD1;ALL_INSN_ADD1;
+
+
+
+
+
+
+
 
 
 
