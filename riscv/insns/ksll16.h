@@ -15,7 +15,7 @@ int sa = RS2 & 0b1111; // RS2[3:0]
 
 bool overflow_flag = false;
 
-int mask_for_underflow = (0xffff << (16 - sa))&0xffff;
+int mask_for_underflow = (0xffff << (15 - sa))&0xffff;
 
 for(int i=0; i<element_num; i++) {
     if(sa != 0) {
@@ -23,7 +23,7 @@ for(int i=0; i<element_num; i++) {
         if( !(rs1[i] & 0x8000) && rst[i] > 0x7fff) {
             rst[i] = 0x7fff;
             overflow_flag = true;
-        } else if((rs1[i] & 0x8000) && (mask_for_underflow == (rs1[i]&mask_for_underflow))) {
+        } else if((rs1[i] & 0x8000) && !(mask_for_underflow == (rs1[i]&mask_for_underflow))) {
             rst[i] = 0x8000;
             overflow_flag = true;
         }
