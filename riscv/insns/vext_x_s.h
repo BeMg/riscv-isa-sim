@@ -1,7 +1,6 @@
+vreg_t rs2 = VRS2;
 
-
-
-
+WRITE_RD(rs2.data[RS1])
 
 
 
@@ -11,6 +10,4 @@
 
 
 ALL_INSN_count;
-V_EXT_count;
-V_EXT_cycle(3);
-ALL_INSN_cycle(3);
+ALL_INSN_cycle(1);

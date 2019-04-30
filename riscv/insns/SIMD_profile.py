@@ -27,6 +27,26 @@ insn_category = {
     'P_SIMD_int_reduction': 1
 }
 
+# insn_category = {
+#     'int_alu': 1,
+#     'int_mul': 3,
+#     'float_alu': 2,
+#     'mem': 3,
+#     'V_SIMD_int_alu': 1,
+#     'V_SIMD_int_mul': 1,
+#     'V_SIMD_float_alu': 1,
+#     'V_SIMD_permuation': 1,
+#     'V_SIMD_int_reduction': 1,
+#     'V_SIMD_float_reduction': 1,
+#     'V_SIMD_mem': 1,
+#     'V_SIMD_setting': 1, 
+#     'P_SIMD_int_alu': 1,
+#     'P_SIMD_int_mul': 1,
+#     'P_SIMD_float_alu': 1,
+#     'P_SIMD_permuation': 1,
+#     'P_SIMD_int_reduction': 1
+# }
+
 # insn -> int
 cycle_count = {
     'vadd_vi': insn_category['V_SIMD_int_alu'],
@@ -42,6 +62,8 @@ cycle_count = {
     'vse': insn_category['V_SIMD_mem'],
     'vlex': insn_category['V_SIMD_mem'],
     'vsex': insn_category['V_SIMD_mem'],
+    'vlw': insn_category['V_SIMD_mem'],
+    'vsw': insn_category['V_SIMD_mem'],
     'vmul_vs': insn_category['V_SIMD_int_alu'],
     'vmul_vv': insn_category['V_SIMD_int_alu'],
     'vsetvl': insn_category['V_SIMD_setting'],
@@ -107,6 +129,8 @@ cycle_count = {
     'ld': insn_category['mem'],
     'sw': insn_category['mem'],
     'sd': insn_category['mem'],
+    'vext_x_v': insn_category['V_SIMD_permuation'],
+    
 }
 
 insn_category = {
@@ -115,7 +139,7 @@ insn_category = {
     'vadd_vv': 'V',
     'vfadd_vf': 'V',
     'vfadd_vv': 'V',
-    'vext_x_s': 'V',
+    'vext_x_v': 'V',
     'vfmul_vf': 'V',
     'vfmul_vv': 'V',
     'vfredsum_vs': 'V',
@@ -132,6 +156,8 @@ insn_category = {
     'vslideup_vx': 'V',
     'vlex': 'V',
     'vsex': 'V',
+    'vlw': 'V',
+    'vsw': 'V',
     'add16': 'P',
     'cras16': 'P',
     'crsa16': 'P',
